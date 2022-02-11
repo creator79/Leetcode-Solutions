@@ -9,7 +9,7 @@ class Solution {
                 st.push(i);
             }else if(ch==')'){
                 if(st.size()==0){
-                    arr[i]='@';
+                    arr[i]='.';
                     count++;
                 }else{
                     st.pop();
@@ -17,7 +17,7 @@ class Solution {
             }
         }
         while(st.size()>0){
-            arr[st.pop()]='@';
+            arr[st.pop()]='.';
             count++;
         }
         
@@ -25,7 +25,7 @@ class Solution {
         int idx=0;
         
         for(int i=0;i<arr.length;i++){
-            if(arr[i]!='@'){
+            if(arr[i]!='.'){
                 ans[idx]=arr[i];
                 idx++;
             }
