@@ -15,4 +15,7 @@ The contributor are Vivek Upadhyay
 Please adhere to this project's `code of conduct`.
 
 
+
+![gif](https://raw.githubusercontent.com/LeetCode-OpenSource/vscode-leetcode/master/docs/gifs/demo.gif)
+
 ![Logo](https://pathrise-website-guide-wp.s3.us-west-1.amazonaws.com/guides/wp-content/uploads/2019/05/10175228/images-11.png)
