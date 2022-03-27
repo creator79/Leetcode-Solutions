@@ -1,3 +1,11 @@
+// 1. First create 2 sets. Then add nums1 elements to set1, and nums2 to set2.This will give us 2 sets with unique elements only.
+// 	2. Now,  just iterate to all elements of set1 and add those elements to first sublist of result list, which are not in set2.
+// 	3. Similarly, iterate to all elements of set2 and add those elements to second sublist of result list, which are not in set1.
+// 	4. Now, we got our result list.
+// Complexity:
+// 	Time: O(n)  : n is length of input array with bigger length
+// 	Space: O(m) : m is size of hashset with bigger length
+
 class Solution {
 	public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
 		Set<Integer> set1 = new HashSet<>();                           // create 2 hashsets
