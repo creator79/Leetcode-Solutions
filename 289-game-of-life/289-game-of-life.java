@@ -17,12 +17,15 @@ class Solution {
           }
         }
     }
-                  
-      for(int i=0;i<board.length;++i)//copying the temp to board
-        {
-          for(int j=0;j<board[0].length;++j)
-            board[i][j]=tempBoard[i][j];
-        }
+                    
+      for (int r =0; r<rows;r++){
+        board[r]= tempBoard[r].clone();
+      }
+      // for(int i=0;i<board.length;++i)//copying the temp to board
+      //   {
+      //     for(int j=0;j<board[0].length;++j)
+      //       board[i][j]=tempBoard[i][j];
+      //   }
 }
   
   public int nbr(int[][] board , int r, int c){
