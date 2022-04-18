@@ -26,6 +26,9 @@ class Solution {
        if (root==null) return;
        inorder(root.left,al,k);
        al.add(root.val);
+    if(al.size()==k){
+      return;
+    }
        inorder(root.right,al,k);
     }
 }
