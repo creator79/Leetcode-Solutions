@@ -1,45 +1,45 @@
-// /**
-//  * Definition for a binary tree node.
-//  * public class TreeNode {
-//  *     int val;
-//  *     TreeNode left;
-//  *     TreeNode right;
-//  *     TreeNode() {}
-//  *     TreeNode(int val) { this.val = val; }
-//  *     TreeNode(int val, TreeNode left, TreeNode right) {
-//  *         this.val = val;
-//  *         this.left = left;
-//  *         this.right = right;
-//  *     }
-//  * }
-//  */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
 class Solution {
+    private boolean result = true;
+    
     public boolean isBalanced(TreeNode root) {
-        if (root == null) return true;
+        if(root == null) {
+            return true;
+        }
         
-        // use -1 to denote the tree is not balanced
-        // >= 0 value means the tree is balanced and it is the actual height of tree
-        return height(root) != -1;
+        isSubTreeBalanced(root);
+        
+        return result;
     }
     
-    private int height(TreeNode root) {
-        if (root == null) {
+    public int isSubTreeBalanced(TreeNode root) {
+        if(root == null) {
             return 0;
         }
         
-        // if left subtree is already not balanced, we do not need to continue
-        // and we can return -1 directly, same for right subtree
-        int leftHeight = height(root.left);
-        if (leftHeight == -1) return -1;
+        int left = isSubTreeBalanced(root.left);
+        int right = isSubTreeBalanced(root.right);
         
-        int rightHeight = height(root.right);
-        if (rightHeight == -1) return -1;
+        int diff = (Math.abs(left-right));
         
-        // if not balanced, return -1
-        if (Math.abs(leftHeight - rightHeight) > 1) {
-            return -1;
+        if(diff>1) {
+            result = false;
         }
         
-        return Math.max(leftHeight, rightHeight) + 1;
+        return Math.max(left, right) + 1;
     }
 }
