@@ -14,25 +14,31 @@
  * }
  */
 class BSTIterator {
-    Stack<TreeNode> st;
+
+    
+    Stack<TreeNode> stack; 
+
     public BSTIterator(TreeNode root) {
-        st = new Stack<>();
-        addAllLeft(root);
+        stack = new Stack() ; 
+        pushLeftArmToStack(root) ;
     }
-    public void addAllLeft(TreeNode root){
-        while(root != null){
-            st.push(root);
-            root = root.left;
-        }
-    }
+    
     public int next() {
-        TreeNode topValue = st.pop();
-        addAllLeft(topValue.right);
-        return topValue.val;
+        TreeNode node = stack.pop() ;
+//         yaha pe apne right ke saare left element ko stack me daal dena hai uske liye ek function likh lo
+        pushLeftArmToStack(node.right) ;
+        return node.val; 
     }
     
     public boolean hasNext() {
-        return st.size() != 0;
+        return !stack.isEmpty() ;
+    }
+    
+    private void pushLeftArmToStack(TreeNode node) {
+        while(node != null) {
+            stack.push(node) ;
+            node = node.left; 
+        }
     }
 }
 /**
