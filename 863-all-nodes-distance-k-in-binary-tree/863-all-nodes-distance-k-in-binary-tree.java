@@ -1,13 +1,19 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+// Approach
 
+// 1. Take out root to node path in an arraylist
+// Ex in example 1 
+//     the root to node path will be [5,3]
+    
+// 2. Now traverse in that arraylist and observe that we have to print k levels down from node 
+//     5                   3
+//     |                   |
+//     k level             k-1 level 
+//     so print all elements k level down from 5 and (k-1) level down from 3
+// 3. But what will happen is it will print the elements such as 5 also as it is 1 level down from 3 but we have to stop that
+
+// 4. To stop that use previous element in arraylist as blocker and when you will reach blocker simply return from it.
+   
+// -------------------------------------------------------------------------
 class Solution {
     //print k levels down function 
     ArrayList<Integer> heapal=new ArrayList<>();
@@ -24,6 +30,7 @@ class Solution {
         printklevelsdown(root.right,k-1,blocker);
     }
     
+    //step1 
     public ArrayList<TreeNode> ntr(TreeNode root,TreeNode data){
         if(root==null){
             return new ArrayList<>();
@@ -57,7 +64,7 @@ class Solution {
             printklevelsdown(al.get(i),k-i,i==0?null:al.get(i-1));
         }
         
-    
+        // i==0?null:al.get(i-1) we have written this because for 1st element in arraylist there will be no blocker so it will be null and for 2 element 1st element will be blocker so as to avoid printing that element.
         
         return heapal;
         
