@@ -11,33 +11,17 @@
  *         this.left = left;
  *         this.right = right;
  *     }
- * }
+ * } 
  */
-class Solution {
+
+public class Solution {
     public boolean isValidBST(TreeNode root) {
-        
-        return isBST(root,null,null);
+        return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
-    public boolean isBST(TreeNode root, TreeNode l, TreeNode r)
-{
-    // Base condition
-    if (root == null)
-        return true;
- 
-    // if left node exist then check it has
-    // correct data or not i.e. left node's data
-    // should be less than root's data
-    if (l != null && root.val <= l.val)
-        return false;
- 
-    // if right node exist then check it has
-    // correct data or not i.e. right node's data
-    // should be greater than root's data
-    if (r != null && root.val >= r.val)
-        return false;
- 
-    // check recursively for every node.
-    return isBST(root.left, l, root) &&
-        isBST(root.right, root, r);
-}
+    
+    public boolean isValidBST(TreeNode root, long minVal, long maxVal) {
+        if (root == null) return true;
+        if (root.val >= maxVal || root.val <= minVal) return false;
+        return isValidBST(root.left, minVal, root.val) && isValidBST(root.right, root.val, maxVal);
+    }
 }
