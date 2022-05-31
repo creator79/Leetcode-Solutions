@@ -121,24 +121,32 @@ class Node
 }*/
 class Tree
 {
+     ArrayList<Integer> res= new ArrayList<>();//global ArrayList
     //Function to return list containing elements of left view of binary tree.
- ArrayList<Integer> result = new ArrayList<Integer>();
-
-    ArrayList<Integer> leftView(Node root)
-    {
-            
-       inorder(root, 0);
-        return result;
-    }
-    
-    private void inorder(Node root, int level){
-        if(root != null){
-            if(result.size() == level){
-                result.add(root.data);
+    ArrayList<Integer> leftView(Node root){
+     if(root == null)//base case for null tree
+            return res;
+        ArrayDeque<Node> q= new ArrayDeque<>();//Queue can also be used, ArrayDeque is faster than Queue
+        
+        q.offerLast(root);//enqueing the root 
+        
+        while(!q.isEmpty())
+        {//BFS whith reverse insertion order 
+            int size= q.size();//popping constraint 
+            for(int i= 0; i < size; i++)
+            {
+                Node temp= q.poll();
+                
+                if(i == 0)//first node 
+                    res.add(temp.data);//only appending the first node in the level from right to left //left view of that particular level
+                
+                if(temp.left != null)//enqueing the right first to access it first 
+                    q.offerLast(temp.left);
+                if(temp.right != null)//enqueing the left after first to access it letter 
+                    q.offerLast(temp.right);
             }
-            inorder(root.left, level+1);
-            inorder(root.right, level+1);
         }
+        return res;//returning the ArrayList 
     }
 
 }
