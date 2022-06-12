@@ -3,7 +3,7 @@ class Solution {
 	Map<Integer, Integer> lastIndex = new HashMap<>();
 	int[] prefixSum = new int[nums.length + 1];
 
-	int maxScore = 2;
+	int maxScore = 0;
 	for (int l=0, r=0; r<nums.length; r++) {
 		prefixSum[r+1] = prefixSum[r] + nums[r];
 		if (lastIndex.containsKey(nums[r])) 
