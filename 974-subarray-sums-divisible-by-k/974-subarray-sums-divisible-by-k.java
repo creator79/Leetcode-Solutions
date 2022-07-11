@@ -2,10 +2,11 @@ class Solution {
     public int subarraysDivByK(int[] a, int k) {
         int ans=0;
         Map<Integer,Integer> map = new HashMap<>();
+//         agar phele do values subarray bna rahe hai toh unhe ans me consider karne ke liye and ye special case bhi hai ye
         map.put(0,1);
         int sum=0;
         int rem=0;
-        // yaha pe a[i] likne pe tle de raha raha index bound pe pta nahi kyo
+        // yaha pe a[i] likne pe tle de raha raha index bound due to for each loop
         for(int i:a){
             sum+=i;
             rem = sum%k;
