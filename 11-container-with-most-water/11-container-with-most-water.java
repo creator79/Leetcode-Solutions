@@ -17,11 +17,6 @@
 //     }
 // }
 
-
-
-
-
-
 class Solution {
     public int maxArea(int[] ar) {
          int i=0,j=ar.length-1,mx=Integer.MIN_VALUE;
