@@ -24,7 +24,7 @@ class Solution {
         if(size==0) return ans;
         ArrayList<Integer> data = new ArrayList<>();
         
-        while(size>0){
+        while(size>0){// for size==1 
           TreeNode temp = q.remove();
           
           data.add(temp.val);
@@ -36,7 +36,5 @@ class Solution {
         }//while
         ans.add(data);
       }//while
-     // return ans;
-      
     }
 }
