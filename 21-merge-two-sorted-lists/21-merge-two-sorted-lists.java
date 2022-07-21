@@ -20,11 +20,12 @@ class Solution {
             if (t1.val <= t2.val) {
                 dt.next = t1;
                 t1 = t1.next;
+                dt = dt.next;
             } else {
                 dt.next = t2;
                 t2 = t2.next;
+                dt = dt.next;
             }
-            dt = dt.next;
         }
 
         if (t1 != null) {
