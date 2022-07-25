@@ -1,29 +1,18 @@
 class Solution {
-
-    public int[] searchRange(int[] nums, int x) {
-        ArrayList<Integer> arr1 = new ArrayList<Integer>();
-
-        for (int i : nums) arr1.add(i);
-
-        int first = arr1.indexOf(x);
-        Collections.reverse(arr1);
-        int last = arr1.size() - 1 - arr1.indexOf(x);
-
+    public int[] searchRange(int[] nums, int target) {
         
-
-
-        if (!arr1.contains(x)) {
-         return  new  int  []  { -1, -1 };
-        }
-        ArrayList<Integer> finalans = new ArrayList<Integer>();
-        finalans.add(first);
-        finalans.add(last);
-
-        /*ArrayList to Array Conversion */
-        int array[] = new int[finalans.size()];
-        for (int j = 0; j < finalans.size(); j++) {
-            array[j] = finalans.get(j);
-        }
-        return array;
+        // Performing binary search on `nums` array
+        int ix = Arrays.binarySearch(nums,target);
+        if(ix < 0) return new int[]{-1,-1};
+        
+        int n = nums.length, i = ix, j = ix;
+        
+        // For first index
+        while(i>0 && nums[i-1] == target) i--;
+        
+        // For last index
+        while(j < n-1 && nums[j+1] == target) j++;
+        
+        return new int[]{i,j};
     }
 }
