@@ -9,19 +9,20 @@ class Solution {
         Collections.reverse(arr1);
         int last = arr1.size() - 1 - arr1.indexOf(x);
 
-        ArrayList<Integer> ans = new ArrayList<Integer>();
-        ans.add(first);
-        ans.add(last);
+        
 
 
         if (!arr1.contains(x)) {
          return  new  int  []  { -1, -1 };
         }
+        ArrayList<Integer> finalans = new ArrayList<Integer>();
+        finalans.add(first);
+        finalans.add(last);
 
         /*ArrayList to Array Conversion */
-        int array[] = new int[ans.size()];
-        for (int j = 0; j < ans.size(); j++) {
-            array[j] = ans.get(j);
+        int array[] = new int[finalans.size()];
+        for (int j = 0; j < finalans.size(); j++) {
+            array[j] = finalans.get(j);
         }
         return array;
     }
