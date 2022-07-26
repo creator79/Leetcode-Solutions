@@ -1,35 +1,16 @@
-//  we create a Function "f" which take two array(i.e "a" & "b") and one integer value(i.e "val")
-// --> "f" return minimum number of operation required to convert array "a" to "val"
-// --> We Check For each integer from 1 to 6 for each from array top to bottom and viceversa
-// --> We take minimum for each value and if not possible then we ignore
-// --> if "min" not change then it means our aim is not possible and return -1
-// --> last return min
-
-
 class Solution {
-    public static int f(int[] a,int[] b,int val) {
-        int ans=0;
-        for(int i=0;i<a.length;i++) {
-            if(b[i]==val && a[i]!=val) ans++;
-            if(b[i]!=val && a[i]!=val) return -1;
+     public int minDominoRotations(int[] A, int[] B) {
+        int[] countA = new int[7], countB = new int[7], same = new int[7];
+        int n = A.length;
+        for (int i = 0; i < n; ++i) {
+            countA[A[i]]++;
+            countB[B[i]]++;
+            if (A[i] == B[i])
+                same[A[i]]++;
         }
-        return ans;
+        for (int i  = 1; i < 7; ++i)
+            if (countA[i] + countB[i] - same[i] == n)//most important line
+                return n - Math.max(countA[i], countB[i]);
+        return -1;
     }
-    public int minDominoRotations(int[] tops, int[] bottoms) {
-        int min = Integer.MAX_VALUE;
-        for(int i=1;i<=6;i++) {
-            int t1 = f(tops,bottoms,i);
-            int t2 = f(bottoms,tops,i);
-            if(t1!=-1) {
-                min = Math.min(t1,min);
-            }
-            if(t2!=-1) {
-                min = Math.min(t2,min);
-            }
-        }
-        if(min==Integer.MAX_VALUE) {
-            return -1;
-        }
-        return min;
-    }
-}
+}//class
