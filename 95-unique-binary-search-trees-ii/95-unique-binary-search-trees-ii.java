@@ -1,43 +1,30 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
+
 class Solution {
     public List<TreeNode> generateTrees(int n) {
-        List<TreeNode> ans = constr(1,n);
-        return ans;
+        return helper(1, n);
     }
-    public List<TreeNode> constr(int start,int end){
-        List<TreeNode> list = new ArrayList();
-        if(start>end){
-            list.add(null);
-            return list;
+    public List<TreeNode> helper(int si, int end){
+        if(si > end){
+            List<TreeNode> al = new ArrayList<>();
+            al.add(null);
+            return al;
         }
-        for(int i=start;i<=end;i++){
-            List<TreeNode> leftchld = constr(start, i-1);
-            List<TreeNode> rightchld = constr(i+1, end);
-            for(int j =0;j<leftchld.size();j++){
-                TreeNode left = leftchld.get(j);
-                for(int k =0; k<rightchld.size();k++){
-                    TreeNode right = rightchld.get(k);
+        
+        List<TreeNode> ans = new ArrayList<>();
+        for(int i = si; i <= end; i++){
+            List<TreeNode> left = helper(si, i - 1);
+            List<TreeNode> right = helper(i + 1, end);
+            
+            for(TreeNode l : left){
+                for(TreeNode r : right){
                     TreeNode root = new TreeNode(i);
-                    root.left = left;
-                    root.right = right;
-                    list.add(root);
+                    root.left = l;
+                    root.right = r;
+                    ans.add(root);
                 }
             }
+            
         }
-        return list;
+        return ans;
     }
 }
