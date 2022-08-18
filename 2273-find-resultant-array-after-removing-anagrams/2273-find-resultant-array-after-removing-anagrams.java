@@ -1,16 +1,42 @@
-class Solution {
-    public List<String> removeAnagrams(String[] words) {
-         List<String> ans = new ArrayList<>();
-        String temp = "";
-        for (String s: words){
-            char[] carr = s.toCharArray();
-            Arrays.sort(carr);
-            String curr = new String(carr);
-            if (!curr.equals(temp))
-                ans.add(s);
-            temp = curr;
+class Solution{
+public boolean checkAnagram(String s, String t)
+    {
+        HashMap<Character,Integer> hs = new HashMap<>(); 
+        HashMap<Character, Integer> h = new HashMap<>();
+        if(s.length() > t.length()) 
+        {
+             return false;
         }
-        return ans;
+        for(Character ch: s.toCharArray()) 
+        {
+				hs.put(ch, hs.getOrDefault(ch,0) + 1); 
+        }
+        
+        for(Character c: t.toCharArray()) 
+        {
+            h.put(c,h.getOrDefault(c,0) +1);
+        }
+        if(h.equals(hs) == true) 
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public List<String> removeAnagrams(String[] words) 
+    {
+        List<String> res = new ArrayList<>();
+        String prev = "";
 
+        for(int i = 0;i<words.length;i++)
+        {
+            if(checkAnagram(words[i], prev) == false)
+            {
+                res.add(words[i]);
+                prev = words[i];
+            }
+        }
+        return res;
+         
     }
 }
