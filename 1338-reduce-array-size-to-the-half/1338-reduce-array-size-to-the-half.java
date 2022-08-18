@@ -7,23 +7,21 @@ class Solution {
 
         ArrayList<Integer> al = new ArrayList<>(map.values());
         Collections.sort(al, Collections.reverseOrder());
-int minSet =0;
-int total=size;
-int i=0;
-        while(total>size/2){
-            total-=al.get(i);
+        // System.out.println(al);
+        int minSet = 0;
+        int total = size;
+        int i = 0;
+        while (total > size / 2) {
+            total -= al.get(i);
             i++;
             minSet++;
         }
-       
 
         return minSet;
     }
 }
-
-
-// 3--4
-// 5--3
+// 3--4  10 - 4 =6
+// 5--3  6 - 3 = 3 { 3 is less than 5 so minimum needs to be 2} 
 // 2--2
 // 7--1
 // Logic click we use hashmap because question needs frequency map kind of thing
@@ -31,4 +29,3 @@ int i=0;
 // Get the frequency and sort them in descending order.
 // While the total elements are less than required add them and increment our sets.
 // Return minimumSets.
-    
