@@ -9,25 +9,21 @@
  * }
  */
 class Solution {
-    public boolean isPalindrome(ListNode head) {
-               if(head==null){
-            return true;
+   
+         public boolean isPalindrome(ListNode head) {
+        ListNode temp = head;
+        Stack stack = new Stack();
+        while (temp != null) {
+            stack.push(temp.val);
+            temp = temp.next;
         }
-        Stack<Integer> stack=new Stack<>();
-        ListNode curr=head;
-        while(curr!=null){
-            stack.push(curr.val);
-            curr=curr.next;
-        }
-        curr=head;
-        while(!stack.isEmpty() && curr!=null){
-            if(curr.val!=stack.pop()){
+        
+        while (head != null) {
+            if (head.val != (int)stack.pop()) {
                 return false;
             }
-            curr=curr.next;
+            head = head.next;
         }
         return true;
-    
-        
     }
-}
+    }
