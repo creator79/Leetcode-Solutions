@@ -12,7 +12,7 @@ class Solution {
    
          public boolean isPalindrome(ListNode head) {
         ListNode temp = head;
-        Stack stack = new Stack();
+        Stack <Integer>stack = new Stack();
         while (temp != null) {
             stack.push(temp.val);
             temp = temp.next;
