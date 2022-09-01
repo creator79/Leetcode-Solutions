@@ -14,9 +14,7 @@ class Solution {
         }
 
         // Checks if the values have duplicates or not. This indicates many to one mappings.
-        List<Character> valueList = new ArrayList<>(map.values());
-        Set<Character> valueSet = new HashSet<>(valueList);
-        if (valueList.size() != valueSet.size()) return false;
-        return true;
+        Set<Character> set = new HashSet<>(map.values());
+        return set.size() == map.size();
     }
 }
