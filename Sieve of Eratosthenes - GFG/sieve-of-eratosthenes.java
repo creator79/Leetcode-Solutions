@@ -30,10 +30,10 @@ class GFG
 class Solution{
     static ArrayList<Integer> sieveOfEratosthenes(int N){
         // code here
-         ArrayList<Integer> al = new ArrayList<>();
+           ArrayList<Integer> al = new ArrayList<>();
         for(int i=2;i<=N;i++){
             int flag=0;
-            for(int j=2;j<=Math.sqrt(i);j++){
+            for(int j=2;j<=i-1;j++){
                 if(i%j==0){
                     flag=1;
                     break;
