@@ -1,4 +1,11 @@
 class Solution {
+//     Count the number of $5 and $10 in hand.
+
+// if (customer pays with $5) five++;
+// if (customer pays with $10) ten++, five--;
+// if (customer pays with $20) ten--, five-- or five -= 3;
+
+// Check if five is positive, otherwise return false.
 
     public boolean lemonadeChange(int[] bills) {
         int five = 0 , ten =0;
