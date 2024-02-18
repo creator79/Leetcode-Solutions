@@ -16,8 +16,8 @@ const createCounter = (init) => {
             return --counter;
         },
         reset: () => {
-            counter = init;
-            return counter;
+            counter = init;  // this init is outer function init
+            return counter;  // we can access it due to closure 
         }
     };
 };
