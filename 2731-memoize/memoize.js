@@ -7,7 +7,7 @@ function memoize(fn) {
 
     return function(...args) {
         let key = JSON.stringify(args);
-        console.log(key)
+        // console.log(key)
         if (cache[key] === undefined) {
             cache[key] = fn(...args);
         }
