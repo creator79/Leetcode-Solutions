@@ -3,20 +3,28 @@
  * @param {Promise} promise2
  * @return {Promise}
  */
-var addTwoPromises = async function(promise1, promise2) {
-    let ans1=0; ans2=0;
-  await promise1.then(value1 => {
-      return ans1 = value1
-})
-  await promise2.then(value2 => {
-    return ans2= value2
-  
-})
+var addTwoPromises = async function (promise1, promise2) {
+// soln using promise.all 
 
-.catch(err => {
-  console.log(err);
-});
-    return ans1+ans2;
+const [val1 , val2] = await Promise.all( [promise1, promise2]) 
+return val1+val2
+
+// genric method
+    // let ans1 = 0; ans2 = 0;
+    // await promise1.then(value1 => {
+    //     return ans1 = value1
+    // })
+    // await promise2.then(value2 => {
+    //     return ans2 = value2
+
+    // })
+    // .catch(err => {
+    //         console.log(err);
+    //     });
+    // return ans1 + ans2;
+
+
+
 
 };
 
